@@ -1,0 +1,65 @@
+{
+  "id": "4000181",
+  "name": "传智医疗",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3909820",
+      "name": "健康评估",
+      "font_class": "navicon-jkpg",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "2696600",
+      "name": "预约挂号",
+      "font_class": "yuyueguahao",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "11819065",
+      "name": "健康",
+      "font_class": "jiankang",
+      "unicode": "e69e",
+      "unicode_decimal": 59038
+    },
+    {
+      "icon_id": "16978037",
+      "name": "S_健康评估",
+      "font_class": "S_jiankangpinggu",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "20945242",
+      "name": "报告查询",
+      "font_class": "baogaochaxun",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "27340826",
+      "name": "健康档案",
+      "font_class": "jiankangdangan",
+      "unicode": "e688",
+      "unicode_decimal": 59016
+    },
+    {
+      "icon_id": "30410476",
+      "name": "健康咨询",
+      "font_class": "jiankangzixun",
+      "unicode": "e747",
+      "unicode_decimal": 59207
+    },
+    {
+      "icon_id": "18267963",
+      "name": "医疗服务",
+      "font_class": "yiliaofuwu",
+      "unicode": "e99a",
+      "unicode_decimal": 59802
+    }
+  ]
+}

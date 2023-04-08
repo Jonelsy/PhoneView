@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <div class="header">
+        <Headers></Headers>
+        <van-notice-bar
+            left-icon="volume-o"
+            text="我们希望每一位老人都将健康长寿，为此我们将不懈努力，传智医疗，呵护您的健康。"
+        />
+      </div>
+    <div style="min-height: 90vh">
+      <router-view/>
+    </div>
+    <div id="tabBar">
+        <tabBar></tabBar>
+    </div>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Headers from './components/Headers';
+import tabBar from "@/components/tabBar";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  components:{Headers,tabBar},
+  data(){
+    return{
+
+    }
   }
 }
 </script>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f8fa;
 }
+
 </style>
