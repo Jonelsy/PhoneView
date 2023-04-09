@@ -13,6 +13,10 @@ import axios from "axios";
 Vue.prototype.$axios = axios //在Vue的原型上添加一个$axios属性，该属性保存了axios
 axios.defaults.baseURL = 'http://43.143.189.51:9999'
 axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
+//引入Element ui
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
 new Vue({
   router,
   render: h => h(App)

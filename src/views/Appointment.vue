@@ -37,7 +37,7 @@ export default {
     },
     //点击获取详情
     InCard(row){
-      console.log(row)
+      localStorage.removeItem("cardID")
       localStorage.setItem("cardID",row)
       this.$router.push("/InnerCard")
     }
