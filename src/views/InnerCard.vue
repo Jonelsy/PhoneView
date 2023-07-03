@@ -30,6 +30,16 @@
           width="180">
       </el-table-column>
     </el-table>
+    <el-table
+        :data="Fulmcheckitems"
+        stripe
+        style="width: 100%">
+      <el-table-column
+          prop="name"
+          label="项目名称"
+          width="180">
+      </el-table-column>
+    </el-table>
     <div>
       <van-button type="info" style="width: 100%" @click="changePeople()">立即预约</van-button>
     </div>
@@ -45,9 +55,15 @@ export default {
   name: "InnerCard",
   data(){
     return{
-      Fulm:{},
+      Fulm: {},
       FulmCheck:[],
       Fulmcheckitems:[],
+      Fulmcheckitemsplus:[
+        {
+          name:'',
+        }
+      ],
+      card:{},
     }
   },
   methods:{
@@ -57,13 +73,22 @@ export default {
         message: '加载中...',
         forbidClick: true,
       });
-      const CardId = localStorage.getItem('cardID')
-      // localStorage.removeItem('cardID')
-      this.$axios.get('/tsetmeal/mobile/setmealDetail?id='+CardId)
+      this.card = JSON.parse(localStorage.getItem('card'))
+      this.$axios.get('/tsetmeal/mobile/setmealDetail?id='+this.card.id)
           .then(res=>{
-            this.Fulm = res.data.data
-            this.FulmCheck = res.data.data.checkgroups
-            this.Fulmcheckitems = res.data.data.checkitems
+            this.Fulm=res.data.data;
+            this.FulmCheck = res.data.data.checkgroupVos;
+            this.FulmCheck.forEach((item,index,array)=>{
+             this.Fulmcheckitems.push(item.tcheckitemList);
+            });
+
+            this.Fulmcheckitems.forEach((item,index)=>{
+              console.log(item);
+              for (let i =0;i<=item.length;i++){
+                this.Fulmcheckitemsplus.name += item[i].name
+              }
+              console.log(this.Fulmcheckitemsplus)
+            })
           })
     },
     //跳转预约须知

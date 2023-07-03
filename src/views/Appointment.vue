@@ -1,6 +1,5 @@
 <template>
 <div id="Appointment">
-
     <van-card
         v-for="(datas) in data"
         :price="datas.price"
@@ -8,7 +7,7 @@
         origin-price="10000.00"
         :thumb="'http://imnu.congmingdemofeitegjj.shop/'+datas.img"
         :key="datas.id"
-        @click="InCard(datas.id)"
+        @click="InCard(datas)"
     />
 </div>
 </template>
@@ -37,8 +36,8 @@ export default {
     },
     //点击获取详情
     InCard(row){
-      localStorage.removeItem("cardID")
-      localStorage.setItem("cardID",row)
+      localStorage.removeItem("card")
+      localStorage.setItem("card",JSON.stringify(row))
       this.$router.push("/InnerCard")
     }
   },

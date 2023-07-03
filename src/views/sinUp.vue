@@ -26,7 +26,7 @@
             style="border-radius: 10px;margin-top: 15px"
         />
         <van-field
-            v-model="loginForm.passSecongword"
+            v-model="passSecongword"
             type="password"
             required
             label="确认密码"
@@ -34,7 +34,15 @@
             style="border-radius: 10px;margin-top: 15px"
         />
         <van-field
-            v-model="sms"
+            v-model="loginForm.telephone"
+            type="number"
+            required
+            label="电话号"
+            placeholder="请输入电话号"
+            style="border-radius: 10px;margin-top: 15px"
+        />
+        <van-field
+            v-model="loginForm.code"
             center
             clearable
             label="验证码"
@@ -42,17 +50,14 @@
             style="border-radius: 10px;margin-top: 15px"
         >
           <template #button>
-            <van-image
-                width="100"
-                :src=captchaImg
-                @click="getcharm()"
-            />
+            <van-button plain hairline type="info" @click="getCharm()" :disabled = "disabled" :loading = "loading" :loading-text="loadtext">{{text}}</van-button>
           </template>
         </van-field>
       </van-cell-group>
     </div>
     <div>
       <van-button round type="info" style="width: 30vh;margin-top: 15px" color="linear-gradient(to right, #eba5a5, #ff0000)" @click="sinup()">注册</van-button>
+
     </div>
   </div>
 </template>
@@ -68,29 +73,59 @@ export default {
       loginForm:{
         username:'',
         password:'',
-        passSecongword:'',
         key:'',
-        // code:'',
+        code:'',
+        telephone:'',
       },
-      sms:'',
+      text:'获取验证码',
+      loadtext:'5s后重试',
+      loading:false,
+      time:5,
+      passSecongword:'',
       captchaImg:'',
+      disabled:false,
     }
   },
   methods:{
     //注册
     sinup(){
-
+      if(this.loginForm.password===this.passSecongword){
+        this.$axios.post("/auth/mobile/register",this.loginForm)
+            .then((res)=>{
+              console.log(res)
+            })
+      }else{
+        Toast("两次密码不一致，请重试")
+      }
     },
-    //验证码
-    getcharm(){
-      this.$axios.get('/auth/captcha').then(res => {
-        this.loginForm.key = res.data.data.token
-        this.captchaImg = res.data.data.captchaImg
+    //手机获取验证码
+    getCharm(){
+      this.$axios.post("/auth/mobile/sendMsg",this.loginForm.telephone)
+          .then((res)=>{
+            this.loginForm.key = res.data.data
+            if (this.time!=0){
+              this.loading = true
+              this.disabled = true
+              let timeout =  setInterval( ()=>{
+                this.time = this.time-1
+                this.loadtext = this.time+'s后重试'
+                if (this.time==0){
+                  this.disabled = false
+                  this.loading = false
+                  this.time = 5
+                  clearInterval(timeout)
+                }
+              },1000)
+            }
+            Toast('注册成功');
+            this.$router.push('/')
+          }).catch(()=>{
+        Toast('获取验证码错误，请稍后再试');
       })
     }
   },
   created() {
-    this.getcharm();
+
   }
 }
 </script>

@@ -45,13 +45,20 @@ export default {
       this.$router.push("/addPeople")
     },
     onSelect(contact) {
-      Toast('选择' + contact.id);
-
+      let that = this;
+      Toast.loading('加载中' + contact.id);
+      const people = contact;
+      localStorage.removeItem('people')
+      localStorage.setItem('people',JSON.stringify(people))
+      //延迟跳转
+      setTimeout(function (){
+        that.$router.push("/order")
+      },2000)
     },
     //获取本账号就诊人信息
     getPeople(){
 
-    }
+    },
   },
   created() {
     this.getPeople()

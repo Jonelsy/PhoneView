@@ -43,7 +43,7 @@
       </van-field>
     </van-cell-group>
   </div>
-  <div>
+  <div style="display: flex;flex-direction:column;align-items: center;justify-content: center">
     <van-button round type="info" style="width: 30vh;margin-top: 15px" color="linear-gradient(to right, #A4C9FF, #1223EB)" @click="loginweb()">登录</van-button>
     <van-button round type="info" style="width: 30vh;margin-top: 15px" color="linear-gradient(to right, #eba5a5, #ff0000)" @click="sinup()">注册</van-button>
   </div>
@@ -70,9 +70,9 @@ export default {
   methods:{
     //登录
     loginweb(){
+      localStorage.clear()
       this.$axios.post('/login?'+qs.stringify(this.loginForm))
           .then(res =>{
-            console.log(res)
             const authorization = res.headers['authorization'];
             const User = authorization.split(",");
             const tokens = User[0];
@@ -81,6 +81,8 @@ export default {
             localStorage.setItem("token",tokens);
             localStorage.removeItem("UserStation");
             localStorage.setItem("UserStation",UserStation);
+            Toast('登陆成功');
+            this.$router.push('/home')
           })
           .catch((res)=>{
             Toast('登陆错误，请重试');
