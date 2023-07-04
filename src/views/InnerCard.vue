@@ -29,17 +29,13 @@
           label="项目名称"
           width="180">
       </el-table-column>
-    </el-table>
-    <el-table
-        :data="Fulmcheckitems"
-        stripe
-        style="width: 100%">
       <el-table-column
-          prop="name"
+          prop="names"
           label="项目名称"
           width="180">
       </el-table-column>
     </el-table>
+
     <div>
       <van-button type="info" style="width: 100%" @click="changePeople()">立即预约</van-button>
     </div>
@@ -76,19 +72,18 @@ export default {
       this.card = JSON.parse(localStorage.getItem('card'))
       this.$axios.get('/tsetmeal/mobile/setmealDetail?id='+this.card.id)
           .then(res=>{
+
             this.Fulm=res.data.data;
             this.FulmCheck = res.data.data.checkgroupVos;
             this.FulmCheck.forEach((item,index,array)=>{
-             this.Fulmcheckitems.push(item.tcheckitemList);
+              this.names = []
+              let obj = { name:'' }
+              this.Fulmcheckitems.push(obj)
+              item.tcheckitemList.forEach((item2,index2,array2)=>{
+                this.names.push(' '+item2.name)
+                this.FulmCheck[index].names = this.names
+              })
             });
-
-            this.Fulmcheckitems.forEach((item,index)=>{
-              console.log(item);
-              for (let i =0;i<=item.length;i++){
-                this.Fulmcheckitemsplus.name += item[i].name
-              }
-              console.log(this.Fulmcheckitemsplus)
-            })
           })
     },
     //跳转预约须知

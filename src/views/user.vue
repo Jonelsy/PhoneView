@@ -15,8 +15,9 @@
         </van-cell-group>
         <van-button plain round type="info" @click="changeIMG" style="margin-top: 15px;margin-bottom: 15px">上传头像</van-button>
       </van-popup>
-      <van-cell title="用户名" value="admin" />
-      <van-cell title="手机号" value="15004758866" />
+      <van-cell title="用户名" :value="username" />
+      <van-cell title="手机号" :value="telephone" />
+      <van-cell title="身份" :value="roleName" />
       <van-cell is-link @click="showchangePWD">修改密码</van-cell>
       <van-popup v-model="showPWD" style="min-height: 200px;border-radius:15px;width: 300px;">
         <van-cell-group style="display: flex;flex-direction: column;justify-content: center;align-items: center">
@@ -30,18 +31,23 @@
       <van-cell is-link>隐私协议</van-cell>
       <van-cell is-link>用户注销</van-cell>
       <div style="margin: 16px;">
-        <van-button round block type="danger" native-type="submit">退出登录</van-button>
+        <van-button round block type="danger" @click="logout">退出登录</van-button>
       </div>
     </van-cell-group>
   </div>
 </template>
 
 <script>
+import {Toast} from "vant";
+
 export default {
   data() {
     return {
+      id:'',
       username:'',
       password:'',
+      telephone:'',
+      roleName:'',
       showPWD: false,
       showIMG: false,
       repwd:'',
@@ -51,6 +57,18 @@ export default {
     };
   },
   methods: {
+    //获取用户信息
+    getuser(){
+      this.$axios.get('/auth/userInfo').then((res)=>{
+
+        this.id = res.data.data.id
+        this.username = res.data.data.username
+        this.telephone = res.data.data.telephone
+        this.roleName = res.data.data.roleName
+        localStorage.removeItem('userID')
+        localStorage.setItem('userID',this.id)
+      })
+    },
     showchangePWD() {
       this.showPWD = true;
     },
@@ -65,8 +83,21 @@ export default {
     },
     changeIMG(){
 
+    },
+    //推出登录
+    logout(){
+      this.$axios.post("/logout").then(res => {
+        localStorage.clear()
+        this.$router.push("/")
+        Toast('退出成功');
+      }).catch(res=>{
+        Toast(res);
+      })
     }
   },
+  created() {
+    this.getuser()
+  }
 };
 </script>
 
