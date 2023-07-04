@@ -40,7 +40,7 @@ export default {
     },
     onSelect(contact) {
       let that = this;
-      Toast.loading('加载中' + contact.id);
+      Toast.loading('加载中');
       const people = contact;
       localStorage.removeItem('people')
       localStorage.setItem('people',JSON.stringify(people))
