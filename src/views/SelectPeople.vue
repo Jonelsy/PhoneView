@@ -19,19 +19,9 @@ export default {
   name: "SelectPeople",
   data(){
     return{
-      chosenContactId:'1',
+      chosenContactId:'95',
       list: [
-        {
-          id: '1',
-          name: '张三',
-          tel: '13000000000',
-          isDefault: true,
-        },
-        {
-          id: '2',
-          name: '李四',
-          tel: '1310000000',
-        },
+
       ],
     }
   },
@@ -41,8 +31,12 @@ export default {
       this.$router.push("/addPeople")
     },
     onEdit(contact) {
-      Toast('编辑' + contact.id);
+      const people = contact;
+      Toast('编辑' );
+      localStorage.removeItem('people')
+      localStorage.setItem('people',JSON.stringify(people))
       this.$router.push("/addPeople")
+
     },
     onSelect(contact) {
       let that = this;
@@ -57,7 +51,13 @@ export default {
     },
     //获取本账号就诊人信息
     getPeople(){
-
+      this.$axios.post('/member/getMemberByUserId?userId=' + localStorage.getItem('userID')
+      ).then(res=>{
+        this.list = res.data.data
+        this.list.forEach((item,index,array)=>{
+          item.tel = item.phonenumber
+        })
+      })
     },
   },
   created() {

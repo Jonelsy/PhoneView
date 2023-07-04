@@ -19,10 +19,9 @@
       体检预约须知。
     </van-notice-bar>
   </div>
-  <div style="height: 60vh">
+  <div>
     <el-table
         :data="FulmCheck"
-        stripe
         style="width: 100%">
       <el-table-column
           prop="name"
@@ -36,7 +35,7 @@
       </el-table-column>
     </el-table>
 
-    <div>
+    <div style="margin-bottom: 50px">
       <van-button type="info" style="width: 100%" @click="changePeople()">立即预约</van-button>
     </div>
   </div>
