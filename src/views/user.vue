@@ -60,7 +60,6 @@ export default {
     //获取用户信息
     getuser(){
       this.$axios.get('/auth/userInfo').then((res)=>{
-
         this.id = res.data.data.id
         this.username = res.data.data.username
         this.telephone = res.data.data.telephone

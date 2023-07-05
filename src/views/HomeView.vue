@@ -41,9 +41,19 @@ export default {
     'https://img01.yzcdn.cn/vant/apple-2.jpg',],
     }
   },
-  components: {
-
-  }
+  methods:{
+    //获取用户id
+    getuser(){
+      this.$axios.get('/auth/userInfo').then((res)=>{
+        let userID = res.data.data.id
+        localStorage.removeItem('userID')
+        localStorage.setItem('userID',userID)
+      })
+    },
+  },
+  created(){
+    this.getuser()
+  },
 }
 </script>
 <style>

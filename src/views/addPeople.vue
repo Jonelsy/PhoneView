@@ -86,13 +86,7 @@ export default {
         this.id = person.id
       }
     },
-    //获取用户id
-    getuser(){
-      this.$axios.get('/auth/userInfo').then((res)=>{
-        localStorage.removeItem('userID')
-        localStorage.setItem('userID',res.data.data.id)
-      })
-    },
+
     //修改患者
     changePerson(){
       this.$axios.post('/member/update',{
@@ -120,7 +114,7 @@ export default {
     }
   },
   created() {
-    this.getuser()
+
     this.getperson()
   }
 }

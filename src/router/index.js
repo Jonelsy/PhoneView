@@ -9,7 +9,8 @@ import InnerCard from "@/views/InnerCard";
 import SelectPeople from "@/views/SelectPeople";
 import addPeople from "@/views/addPeople";
 import order from "@/views/order";
-import user from "@/views/user"
+import user from "@/views/user";
+import selectnoCard from "@/views/selectnoCard";
 Vue.use(VueRouter)
 
 const routes = [
@@ -66,6 +67,11 @@ const routes = [
     path: '/user',
     name: 'user',
     component: user
+  },
+  {
+    path: '/selectnoCard',
+    name: 'selectnoCard',
+    component: selectnoCard
   }
 ]
 

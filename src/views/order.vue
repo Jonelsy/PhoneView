@@ -34,7 +34,7 @@ export default {
       ordertiome:'',
       time:1 * 3 * 60 * 1000,
       show:false,
-      date:'',
+      date:null,
     }
   },
   methods:{
@@ -56,16 +56,22 @@ export default {
     onSubmit(){
       let people = JSON.parse(localStorage.getItem('people'))
       let card = JSON.parse(localStorage.getItem('card'))
-      this.$axios.post('/order/mobile/addOrderMobile',{
-        memberId:people.id,//患者id
-        orderdate:this.date,
-        ordertype:'微信预约',
-        setmealId:card.id,
-      }).then(res=>{
+      const params = new URLSearchParams();
+      params.append('memberId', people.id);
+      params.append('orderdate', '2019-05-01');
+      params.append('ordertype', '微信预约');
+      params.append('setmealId', card.id);
+      this.$axios.post('/order/mobile/addOrderMobile',params,
+          {
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+          }).then(res=>{
         Toast('预约成功');
         this.$router.push("/orderWin")
-      }
-    )
+      }).catch(res=>{
+        Toast('请选择预约日期，稍后再试');
+      })
     },
     //获取本地存储的订单信息与人员信息
     getorder(){
