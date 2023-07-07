@@ -11,6 +11,7 @@ import addPeople from "@/views/addPeople";
 import order from "@/views/order";
 import user from "@/views/user";
 import selectnoCard from "@/views/selectnoCard";
+import selectReports from "@/views/selectReports";
 Vue.use(VueRouter)
 
 const routes = [
@@ -72,6 +73,11 @@ const routes = [
     path: '/selectnoCard',
     name: 'selectnoCard',
     component: selectnoCard
+  },
+  {
+    path: '/selectReports',
+    name: 'selectReports',
+    component: selectReports
   }
 ]
 

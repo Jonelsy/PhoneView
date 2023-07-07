@@ -11,7 +11,7 @@
     <div>
       <van-grid gutter="10" :column-num="2" direction="horizontal"  style="margin-top: 20px">
         <van-grid-item class="iconfont" icon-prefix="icon" icon="yiliaofuwu"  text="体检预约" to="/Appointment" dot style="height: 80px"/>
-        <van-grid-item class="iconfont" icon-prefix="icon" icon="baogaochaxun"  text="报告查询" to="/" style="height: 80px"/>
+        <van-grid-item class="iconfont" icon-prefix="icon" icon="baogaochaxun"  text="报告查询" to="/selectReports" style="height: 80px"/>
         <van-grid-item class="iconfont" icon-prefix="icon" icon="navicon-jkpg"  text="健康评估" to="/" style="height: 80px"/>
         <van-grid-item class="iconfont" icon-prefix="icon" icon="jiankang"  text="健康干预" to="/" style="height: 80px"/>
         <van-grid-item class="iconfont" icon-prefix="icon" icon="jiankangdangan"  text="健康档案" to="/" style="height: 80px"/>

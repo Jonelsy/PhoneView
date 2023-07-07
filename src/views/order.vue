@@ -58,7 +58,7 @@ export default {
       let card = JSON.parse(localStorage.getItem('card'))
       const params = new URLSearchParams();
       params.append('memberId', people.id);
-      params.append('orderdate', '2019-05-01');
+      params.append('orderdate', this.date);
       params.append('ordertype', '微信预约');
       params.append('setmealId', card.id);
       this.$axios.post('/order/mobile/addOrderMobile',params,

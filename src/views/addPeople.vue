@@ -70,9 +70,11 @@ export default {
         remark: "",
         sex: this.sex,
         userId: localStorage.getItem('userID')
+      }).then(res=>{
+        Toast('新增成功');
+        this.$router.push('/selectnoCard')
       })
-      Toast('新增成功');
-      this.$router.go(-1)
+
     },
     //获取修改患者名单
     getperson(){
@@ -100,8 +102,8 @@ export default {
         sex: this.sex,
         id: this.id,
       })
-      Toast('新增成功');
-      this.$router.go(-1)
+      Toast('修改成功');
+      this.$router.push('/selectnoCard')
     },
     deletePerson(){
       let person = JSON.parse( localStorage.getItem('people'))
@@ -109,7 +111,7 @@ export default {
           .then(res=>{
             Toast('删除成功');
             localStorage.removeItem('people')
-            this.$router.go(-1)
+            this.$router.push('/selectnoCard')
           })
     }
   },
