@@ -17,6 +17,10 @@ axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
+//引入日期格式化
+import formatDate from './DataChange/FormData'
+Vue.prototype.$formatDate = formatDate
+
 new Vue({
   router,
   render: h => h(App)

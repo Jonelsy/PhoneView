@@ -12,6 +12,8 @@ import order from "@/views/order";
 import user from "@/views/user";
 import selectnoCard from "@/views/selectnoCard";
 import selectReports from "@/views/selectReports";
+import reports from "@/views/reports";
+import userChange from "@/views/userChange";
 Vue.use(VueRouter)
 
 const routes = [
@@ -78,6 +80,16 @@ const routes = [
     path: '/selectReports',
     name: 'selectReports',
     component: selectReports
+  },
+  {
+    path: '/reports',
+    name: 'reports',
+    component: reports
+  },
+  {
+    path: '/userChange',
+    name: 'userChange',
+    component: userChange
   }
 ]
 
