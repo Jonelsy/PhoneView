@@ -59,8 +59,8 @@ export default {
   data(){
     return{
       loginForm:{
-        username:'',
-        password:'',
+        username:'jonelsy',
+        password:'jonelsy',
         key:'',
         code:'',
       },
@@ -94,6 +94,7 @@ export default {
     },
     //验证码
     getcharm(){
+      localStorage.clear()
       this.$axios.get('/auth/captcha').then(res => {
         this.loginForm.key = res.data.data.token
         this.captchaImg = res.data.data.captchaImg
