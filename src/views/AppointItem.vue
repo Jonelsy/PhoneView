@@ -2,14 +2,19 @@
     <div>
         <van-swipe-cell :key="item.id" v-for="item in tableData" :before-close="beforeClose" :name="item.id">
             <van-card
-                :desc="item.setmealName"
+                :desc="item.setmealName "
                 :title="item.memberName"
                 class="goods-card"
                 thumb="https://img01.yzcdn.cn/vant/cat.jpeg"
             >
               <template #tags>
-                <span>{{item.orderstatus}}</span>
+                <div>
+                  <span>{{item.orderdate}}</span>
+                  <van-tag type="danger" style="float: right" v-if="item.orderstatus==='已取消'">{{item.orderstatus}}</van-tag>
+                  <van-tag type="success" style="float: right" v-else>{{item.orderstatus}}</van-tag>
+                </div>
               </template>
+
             </van-card>
           <template #right v-if="item.orderstatus!=='已结束'&&item.orderstatus!=='已取消'">
             <van-button text="取消预约" type="danger" class="delete-button" />
@@ -46,6 +51,9 @@ export default {
       }).then(res=>{
         this.total = res.data.data.total
         this.tableData = res.data.data.records
+        this.tableData.forEach(item=>{
+          item.orderdate=this.$formatDate(new Date(item.orderdate),'yyyy-MM-dd')
+        })
       })
     },
     beforeClose({ position, instance }){
