@@ -13,9 +13,7 @@
         <van-grid-item class="iconfont" icon-prefix="icon" icon="yiliaofuwu"  text="体检预约" to="/Appointment" dot style="height: 80px"/>
         <van-grid-item class="iconfont" icon-prefix="icon" icon="baogaochaxun"  text="报告查询" to="/selectReports" style="height: 80px"/>
         <van-grid-item class="iconfont" icon-prefix="icon" icon="navicon-jkpg"  text="预约列表" to="/AppointItem" style="height: 80px"/>
-        <van-grid-item class="iconfont" icon-prefix="icon" icon="jiankang"  text="健康干预" to="/" style="height: 80px"/>
-        <van-grid-item class="iconfont" icon-prefix="icon" icon="jiankangdangan"  text="健康档案" to="/" style="height: 80px"/>
-        <van-grid-item class="iconfont" icon-prefix="icon" icon="jiankangzixun"  text="健康咨询" to="/" style="height: 80px"/>
+        <van-grid-item class="iconfont" icon-prefix="icon" icon="jiankang"  text="我的患者" to="/selectnoCard" style="height: 80px"/>
       </van-grid>
     </div>
     <div>
@@ -60,7 +58,7 @@ export default {
 .my-swipe .van-swipe-item {
   color: #fff;
   font-size: 20px;
-  height: 230px;
+  height: 300px;
   text-align: center;
   background-color: #39a9ed;
 }
