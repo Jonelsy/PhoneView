@@ -3,10 +3,11 @@
   <div>
     <van-image
         round
-        width="10rem"
-        height="10rem"
-        :src="require('../image/page-topIco.png')"
+        width="8rem"
+        height="8rem"
+        :src="require('../image/logo.png')"
     />
+    <h1>健康之约</h1>
   </div>
   <div>
     <van-cell-group style="border-radius: 10px;background-color: #f7f8fa">

@@ -4,7 +4,7 @@
     <van-card
         :desc="item.viewReportDate"
         title="您有一份体检报告"
-        thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
+        :thumb="require('../image/report.png')"
     >
       <template #footer>
         <van-button size="large" plain hairline type="info" @click="downReport(item)">下载体检报告</van-button>

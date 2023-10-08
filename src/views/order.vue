@@ -54,6 +54,7 @@ export default {
     },
     //提交订单
     onSubmit(){
+      this.$router.push('/orderWin')
       let people = JSON.parse(localStorage.getItem('people'))
       let card = JSON.parse(localStorage.getItem('card'))
       const params = new URLSearchParams();

@@ -33,10 +33,9 @@ export default {
   name: 'HomeView',
   data(){
     return{
-      images:['https://img01.yzcdn.cn/vant/apple-1.jpg',
-        'https://img01.yzcdn.cn/vant/apple-2.jpg',
-        'https://img01.yzcdn.cn/vant/apple-1.jpg',
-    'https://img01.yzcdn.cn/vant/apple-2.jpg',],
+      images:['http://imnu.congmingdemofeitegjj.shop/d771932c-61bf-42d1-932e-a7b57d221dac0.jpg',
+        'http://imnu.congmingdemofeitegjj.shop/2c99f81b-6138-4b8e-a23b-5fbe38ffe4a20.jpg',
+        'http://imnu.congmingdemofeitegjj.shop/d771932c-61bf-42d1-932e-a7b57d221dac0.jpg',],
     }
   },
   methods:{

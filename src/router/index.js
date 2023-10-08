@@ -16,6 +16,7 @@ import reports from "@/views/reports";
 import userChange from "@/views/userChange";
 import AppointItem from "@/views/AppointItem";
 import showUS from "@/views/showUS";
+import orderWin from "@/views/orderWin";
 Vue.use(VueRouter)
 
 const routes = [
@@ -102,6 +103,11 @@ const routes = [
     path: '/showUS',
     name: 'showUS',
     component: showUS
+  },
+  {
+    path: '/orderWin',
+    name: 'orderWin',
+    component: orderWin
   }
 ]
 

@@ -1,7 +1,7 @@
 <template>
 <div class="Headers">
   <van-nav-bar
-      title="传智医疗"
+      title="健康之约"
       left-text="返回"
       left-arrow
       @click-left="onClickLeft"
