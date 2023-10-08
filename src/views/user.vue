@@ -15,6 +15,7 @@
       <van-cell is-link>用户协议</van-cell>
       <van-cell is-link>隐私协议</van-cell>
       <van-cell is-link>用户注销</van-cell>
+      <van-cell is-link @click="showUS">关于我们</van-cell>
       <div style="margin: 16px;">
         <van-button round block type="danger" @click="logout">退出登录</van-button>
       </div>
@@ -55,6 +56,9 @@ export default {
     },
     showchangeIMG(){
       this.$router.push('/userChange')
+    },
+    showUS(){
+      this.$router.push('/showUS')
     },
     onSubmit(){
 
