@@ -1,6 +1,5 @@
 <template>
 <div id="orderWin">
-
 </div>
 </template>
 

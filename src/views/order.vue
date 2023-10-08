@@ -68,7 +68,8 @@ export default {
             }
           }).then(res=>{
         Toast('预约成功');
-        this.$router.push("/orderWin")
+        window.open('http://43.143.189.51:9999/alipay/pay?traceNo='+this.card.id+"&totalAmount="+this.card.price+"&subject="+1111)
+        //this.$router.push("/orderWin")
       }).catch(res=>{
         Toast('请选择预约日期，稍后再试');
       })
