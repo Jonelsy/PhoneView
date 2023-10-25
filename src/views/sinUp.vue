@@ -92,7 +92,12 @@ export default {
       if(this.loginForm.password===this.passSecongword){
         this.$axios.post("/auth/mobile/register",this.loginForm)
             .then((res)=>{
-              console.log(res)
+              if(res.data.code!==200){
+                Toast(res.data.msg);
+              }else{
+                Toast('注册成功');
+                this.$router.push('/')
+              }
             })
       }else{
         Toast("两次密码不一致，请重试")
@@ -100,7 +105,11 @@ export default {
     },
     //手机获取验证码
     getCharm(){
-      this.$axios.post("/auth/mobile/sendMsg",this.loginForm.telephone)
+      this.$axios.post("/auth/mobile/sendMsg",this.loginForm.telephone,{
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
           .then((res)=>{
             this.loginForm.key = res.data.data
             if (this.time!=0){
@@ -117,8 +126,6 @@ export default {
                 }
               },1000)
             }
-            Toast('注册成功');
-            this.$router.push('/')
           }).catch(()=>{
         Toast('获取验证码错误，请稍后再试');
       })
