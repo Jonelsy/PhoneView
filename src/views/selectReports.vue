@@ -11,7 +11,7 @@
     />
     <van-popup v-model="show" style="width: 60%;height: 20vh;display: flex;flex-direction:column;justify-content: center;align-items: center;border-radius: 10px">
       <van-cell-group>
-        <van-field v-model="helpcode" label="助记码" placeholder="请输入助记码" />
+        <van-field v-model="helpcode" label="身份证号" placeholder="请输入身份证号" />
       </van-cell-group>
       <van-button plain hairline round type="info" style="margin-top: 15px;width: 50%" @click="serchPort">确定</van-button>
     </van-popup>
@@ -47,6 +47,7 @@ export default {
         this.list.forEach((item,index,array)=>{
           item.tel = item.phonenumber
         })
+
       })
     },
     //获取卡片

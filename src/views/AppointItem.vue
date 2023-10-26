@@ -3,7 +3,7 @@
       <div :key="item.id" v-for="item in tableData">
         <van-swipe-cell  :before-close="beforeClose" :name="item.id" v-if="item.sex==='女'">
           <van-card
-              :desc="item.setmealName "
+              :desc="item.setmealName"
               :title="item.memberName"
               class="goods-card"
               thumb="http://imnu.congmingdemofeitegjj.shop/1a18b5b6-418e-462b-b302-82a381574af2v.png"
@@ -64,16 +64,9 @@ export default {
   },
   methods:{
     getitem(){
-      this.$axios.get('/order/page',{
-        params:{
-
-          page:1,
-          pageSize:10,
-
-        }
-      }).then(res=>{
-        this.total = res.data.data.total
-        this.tableData = res.data.data.records
+      this.$axios.get('/member/viewOrderList/'+localStorage.getItem('userID')).then(res=>{
+        this.tableData = res.data.data
+        console.log(res)
         this.tableData.forEach(item=>{
           item.orderdate=this.$formatDate(new Date(item.orderdate),'yyyy-MM-dd')
         })

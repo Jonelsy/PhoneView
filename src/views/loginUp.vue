@@ -54,6 +54,7 @@
 <script>
 import qs from "qs";
 import {Toast} from "vant";
+import axios from "axios";
 
 export default {
   name: "loginUp",
@@ -82,6 +83,7 @@ export default {
             localStorage.setItem("token",tokens);
             localStorage.removeItem("UserStation");
             localStorage.setItem("UserStation",UserStation);
+            axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
             Toast('登陆成功');
             this.$router.push('/home')
           })

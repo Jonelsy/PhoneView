@@ -3,9 +3,9 @@
     <div>
       <van-image
           round
-          width="10rem"
-          height="10rem"
-          :src="require('../image/page-topIco.png')"
+          width="8rem"
+          height="8rem"
+          :src="require('../image/logo.png')"
       />
     </div>
     <div>

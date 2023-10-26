@@ -36,10 +36,13 @@ export default {
           password : this.helpcode,
         }
       }).then(res=>{
+        Toast(res.data.msg);
         this.reports = res.data.data
         this.reports.forEach((item,index)=>{
           item.viewReportDate=this.$formatDate(new Date(item.viewReportDate),'yyyy-MM-dd')
         })
+      }).catch((res)=>{
+        Toast(res.data.msg);
       })
     },
     //下载当前行数的文件
